@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ARRANGEMENT</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.css">
+	<link rel="stylesheet" type="text/css" href="backimg.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body style=" background: #12c2e9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+<center>
+		<br>
+	    <form action="/getArrangement" method="GET">
+		<select name="years">
+					<%for(var i = 0; i < years.length && years[i] != "ADMIN"; i++){%>
+					<option value=<%=years[i]%> name = "selectedYear"><%=years[i]%></option>
+					<%}%>
+				    </select>
+				    <input type="submit" value="Show">
+        </form>
+        <%if(yearSelected){%><h2><%=yearSelected%></h2><%}%>
+        <br>
+        <%if(arrangements && arrangements.length > 0){%>
+            <form method="post" action="/deleteSeatingArrangement/<%=yearSelected%>">
+            <%for(var i = 0; i < arrangements.length;i++){%>
+            <div class="ui secondary button" style="width:330px; " id = "box">
+            <input type="radio" name="arrangementFile" value=<%=arrangements[i]%>  > <%=arrangements[i]%><br>
+            </div>
+            <br>
+            <br>
+            <br>
+            <%}%>
+            <input type="submit" value="Delete">
+            
+            </form>   
+        <%}%>
+
+        <li><h3><i>** If you dont see any year[s] in drop down menu means NO userId has been updated. **</i></h3></li><br>      
+                <li><h3><i>This tab is to delete unnecessary seating arrangement file[s], only one file can be deleted once or entire seatingArrangement directory.</i></h3></li><br>  
+        <li><h3><i>Years[s] in dropdown menu are based on Id of a specific student (for ID 2019PEE234 2019 year will be showed similary for rest of the IDs irrespective of rollnumber at the end).</i></h3></li><br>          
+        <li><h3><i><u>Show</u></i> : To see all seating arrangement files.</h3></li><br>
+        <li><h3><i><u>Delete</u></i> : To delete any selected seating arrangement file.</h3></li><br>
+
+<br>
+</center>
+</body>
+<script src = "https://code.jquery.com/jquery-3.4.1.js">
+$('#box').on('click', function(){
+   $(this).prop('checked', !checkbox.prop('checked'));
+});
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NOTICE</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.css">
+	<link rel="stylesheet" type="text/css" href="backimg.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body style=" background: #12c2e9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+<center><br>
+	<h1>SHOW NOTICE FOR : </h1>
+	<form action="/getNotice" method="GET">
+		<select name="years">
+					<%for(var i = 0; i < years.length && years[i] != "ADMIN"; i++){%>
+					<option value=<%=years[i]%> name = "selectedYear"><%=years[i]%></option>
+					<%}%>
+				  </select>
+				  <input type="submit" value="Show">
+		</form>
+<br>
+<%if(yearSelected){%><h1 id = "mainCall"><%=yearSelected%></h1><%}%>
+<br>
+
+		<form action="/updateNotice" method="get">
+				<div class="ui form">
+						<div class="field">
+						<textarea name = "updatedNotice"><%=notice%></textarea>
+						</div>
+					  </div><br>
+					  <h1>UPDATE NOTICE FOR : </h1>
+					  <select name="years">
+							<%for(var i = 0; i < years.length && years[i] != "ADMIN"; i++){%>
+							<option value=<%=years[i]%> name = "selectedYear"><%=years[i]%></option>
+							<%}%>
+						  </select>
+						  
+					  <button class="ui secondary button" id = "uploadNotice">Update</button>
+		</form> <br><br>
+		<li><h3><i>** If you dont see any year[s] in drop down menu means NO userId has been updated. **</i></h3></li><br>      
+        <li><h3><i>This tab is update/ create notice with respect to specific year, which will be displayed in the COE app.</i></h3></li><br>  
+        <li><h3><i>Years[s] in dropdown menu are based on Id of a specific student (for ID 2019PEE234 2019 year will be showed similary for rest of the IDs irrespective of rollnumber at the end).</i></h3></li><br>  
+        <li><h3><i><u>Show</u></i> : To see any notice for a specific year.</h3></li><br>
+        <li><h3><i><u>Update</u></i> : To update/ create notice for a specific year.</h3></li><br> 
+</center>
+</body>
+
+</html>

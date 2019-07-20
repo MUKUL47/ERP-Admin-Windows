@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ARRANGEMENT</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.css">
+	<link rel="stylesheet" type="text/css" href="backimg.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body style=" background: #12c2e9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+<center>
+		<h3>THIS ONLY WORKS IF A STUDENT IS SUBSCRIBED IN COE APP WITH A VALID EMAIL ADDRESS</h3>
+        <h3 id = "mainCall"><%=message%></h3>
+		<!-- <form method="post" action="/updateAddSubscription" >
+			<div class="ui input focus" >	
+			<input type="text" name="sub" required style="width: 220px;" placeholder="Enter email">
+			<button class="ui secondary button" style="width: 230px;" id = "idd">Add/ Update subscription</button>
+			</div>
+        </form> -->
+                    <br>
+					<form method="post" action="/notify">
+						<div class="ui input focus" >			
+							<input class="ui input focus" type="text" placeholder="Notice Board" name="notify" required style="width: 450px;" >
+						</div>	
+						<br>
+						<button class="ui secondary button" id = "notify" style="width: 450px;">Notify all students</button>						
+					</form>
+					<br>
+					<form method="post" action="/notifySpecific">
+						<div class="ui input focus" >			
+                            <input class="ui input focus" type="text" placeholder="Year and batch" name="yearBatch" required style="width: 225px;" >
+                            <input class="ui input focus" type="text" placeholder="Notice Board" name="notify" required style="width: 225px;" >
+						</div>	
+						<br>
+						<button class="ui secondary button" id = "notify" style="width: 450px;">Notify specific year and batch (2019MEC/ 2017PEE)</button>						
+					</form>
+                    <br>
+					<form method="post" action="/notifyYear">
+						<div class="ui input focus" >			
+                            <input class="ui input focus" type="text" placeholder="Year" name="year" required style="width: 225px;" >
+                            <input class="ui input focus" type="text" placeholder="Notice Board" name="notify" required style="width: 225px;" >
+						</div>	
+						<br>
+						<button class="ui secondary button" id = "notify" style="width: 450px;">Notify specific year</button>						
+                    </form>
+                    <br>
+					<form method="post" action="/notifyStudent">
+						<div class="ui input focus" >			
+                            <input class="ui input focus" type="text" placeholder="ID" name="id" required style="width: 225px;" >
+                            <input class="ui input focus" type="text" placeholder="Notice Board" name="notify" required style="width: 225px;" >
+						</div>	
+						<br>
+						<button class="ui secondary button" id = "notify" style="width: 450px;">Notify student</button>						
+					</form>
+					<li><h3><i>This is to send a notice (email) to student[s] who are subscribed with a valid email address in the COE app.</i></h3></li><br>          
+					<li><h3><i><u>NotifyAllStudents</u></i> : All students who are subscribed in the app with a valid email address will recieve notifications.</h3></li><br>
+					<li><h3><i><u>NotifySpecificYearAndBatch</u></i> : All students will notified whose IDs is matched with some prefix, example : 2016MEE any student whose Id starts with this will be notified.</h3></li><br>
+					<li><h3><i><u>NotifySpecificYear</u></i> : All students will notified whose IDs is matched with a specific year irrespective of department (2015CSE342/ 2015MEC231 etc).</h3></li><br>
+					<li><h3><i><u>NotifyStudent</u></i> : Student with that specific ID will be notified (This will only work if that student is subscribed in the COE app).</h3></li><br>
+</center>
+</body>
+</html>

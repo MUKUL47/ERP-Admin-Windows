@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HOME</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.css">
+	<link rel="stylesheet" type="text/css" href="backimg.css">
+</head>
+
+<body style=" background: #12c2e9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+<center>
+		<h1 id = "mainCall"><%=userPass%></h1>
+		<form method="post" action="/uploadIdPass" enctype="multipart/form-data">
+			<div class="ui input focus" >	
+			<input type="file" name="userDetails" required multiple accept=".csv"  required style="width: 220px;">
+			<button class="ui secondary button" style="width: 230px;" id = "idd">Upload Id Pass</button>
+			</div>
+		</form>
+
+		<br>
+		<form method="post" action="/updateSeatingArrangement" enctype="multipart/form-data">
+			<div class="ui input focus" >			
+				<input class="ui input focus" type="number" placeholder="Year" name="year" required style="width: 100px;" >
+				<input type="file" name="multFile" required multiple style="width: 120px;" accept=".pdf">
+				<br>
+				<button class="ui secondary button" id = "uploadNotice">Upload Seating Arrangements</button>
+			</div>
+			</form>
+			<br>
+			<form method="post" action="/updateNoticeFiles" enctype="multipart/form-data">
+				<div class="ui input focus" >			
+					<input type="file" name="multFile" required multiple style="width: 450px;" placeholder="asds">
+					<br><br>
+				</div>
+					<button class="ui secondary button" id = "u" style="width: 450px;">Upload extra notice file[s]</button>
+				
+			</form>
+			<br>
+			<form method="post" action="/updateMarkSheet" enctype="multipart/form-data">
+				<div class="ui input focus" >			
+					<input type="file" name="multFile" required multiple style="width: 450px;" accept=".pdf">
+					<br><br>
+				</div>
+					<button class="ui secondary button" id = "u" style="width: 450px;">Upload Marksheet[s]</button>
+				
+			</form>
+			
+		<br>
+		<li><h3><u><i>UploadIdPass</i></u>:  Attach one/ many file.csv containing ONLY id and password. (only .csv format and ID number should ONLY contains alphabets/ numbers)</h3></li><br>
+		<li><h3><i><u>UploadSeatingArrangements</u></i>: Attach one/ many file.pdf with specific year. (only .pdf format and filename should only contain alphabets/ numbers ex : w1_E.pdf ) </h3></li><br>
+		<li><h3><i><u>UploadMarkSheet[s]</u></i>: To upload marksheet[s], attach one/ many file.pdf along with Batch, Year and Semester example :
+			2015 batch with 1/ 2/ 3/ 4 year(B.TECH) and 1 or 2 semester. (only .pdf format and filename : 2017CSE003.pdf/ 2019MEC042.pdf etc supported ) </h3></li><br>
+	</center>
+</body>
+</html>
