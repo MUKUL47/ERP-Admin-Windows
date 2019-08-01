@@ -4,12 +4,6 @@
 const dns       = require('dns');
 const home      = require('./Database/home');
 
-module.exports.searchId = (req,res)=>{ 
-    if( home.T ){
-        res.render("index.ejs",{userPass : home.T })
-    }
-    else res.render("index.ejs",{userPass : "ID not found" })     
-}
 module.exports.deleteArrangement = (req,res,next)=>{
     console.log(req.params.year)
     

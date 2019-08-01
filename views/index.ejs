@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>HOME</title>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.css">
@@ -10,89 +11,104 @@
 background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 ">
-<center>
-		<h1 id = "mainCall"><%=userPass%></h1>
-	
+	<center>
+		<h1 id="mainCall"><%=userPass%></h1>
+
 		<form method="get" action="/searchUser" style="display: inline">
-			<div class="ui input focus" >			
-					<input type="text" placeholder="Enter Id" name="id" required style="width: 220px;">
-					<button class="ui secondary button" style="width: 230px;" id = "searchPass">Search Pass</button>
+			<div class="ui input focus">
+				<input type="text" placeholder="Enter Id" name="id" required style="width: 220px;">
+				<button class="ui secondary button" style="width: 230px;" id="searchPass">Search Pass</button>
 			</div>
-			</form>
+		</form>
+		<br><br>
+		<form method="get" action="/updateAdmin" style="display: inline">
+			<div class="ui input focus">
+				<input type="text" placeholder="Update Admin" name="admin" required style="width: 220px;">
+				<button class="ui secondary button" style="width: 230px;">Update Admin</button>
+			</div>
+		</form>
+
+		<br><br>
+		<form method="get" action="/deleteIdPass" style="display: inline">
+			<div class="ui input focus">
+				<input type="text" placeholder="Id" name="id" required style="width: 220px;">
+				<button class="ui secondary button" style="width: 230px;">Delete user</button>
+			</div>
 			<br><br>
-			<form method="get" action="/updateAdmin" style="display: inline">
-				<div class="ui input focus" >			
-						<input type="text" placeholder="Update Admin" name="admin" required style="width: 220px;">
-						<button class="ui secondary button" style="width: 230px;">Update Admin</button>
-				</div>
-				</form>
+		</form>
+		<form method="get" action="/deleteYearId" style="display: inline">
+			<div class="ui input focus">
+				<input type="text" placeholder="Year" name="year" required style="width: 220px;">
+				<button class="ui secondary button" style="width: 230px;">Delete year</button>
+			</div>
+		</form>
 
-				<br><br>
-				<form method="get" action="/deleteIdPass" style="display: inline">
-					<div class="ui input focus" >			
-							<input type="text" placeholder="Id" name="id" required style="width: 220px;">
-							<button class="ui secondary button" style="width: 230px;">Delete user</button>
-					</div>
-					<br><br>
-					</form>
-					<form method="get" action="/deleteYearId" style="display: inline">
-						<div class="ui input focus" >			
-								<input type="text" placeholder="Year" name="year" required style="width: 220px;">
-								<button class="ui secondary button" style="width: 230px;">Delete year</button>
-						</div>
-						</form>
-		
-						
-	
-					<br><br>
-				<form method="get" action="/updateRecord" style="display: inline">
-					<div class="ui input focus" >			
-							<input type="text" placeholder="Id" name="id" required style="width: 120px;">
-							<input type="text" placeholder="Password" name="pass" required style="width: 100px;">
-							<button class="ui secondary button" style="width: 230px;">Update/ Add user</button>
-					</div>
-					</form>
 
-					<br><br>
-				
-			<form method="post" action="/deleteYear" style="display: inline">
-				<div class="ui input focus" >			
-						<input type="number" placeholder="Year" name="year" required style="width: 220px;">
-						<button class="ui secondary button" style="width: 230px;">Delete Year directory</button>
-				</div>
-				</form>
-				<br><br>
-				<form method="post" action="/deleteBatch" style="display: inline">
-					<div class="ui input focus" >			
-							<input type="text" placeholder="Year" name="year" required style="width: 110px;">
-							<input type="text" placeholder="Batch" name="batch" required style="width: 110px;">
-							<button class="ui secondary button" style="width: 230px;">Delete Only Batch directory</button>
-					</div>
-					</form>
-					<br><br>
-					<form method="post" action="/deleteSem" >
-						<div class="ui input focus" >			
-							<input class="ui input focus" type="number" placeholder="Year" name="year" required style="width: 78px;" >
-							<input class="ui input focus" type="number" placeholder="Batch" name="batch" required style="width: 78px;" >
-							<input class="ui input focus" type="number" placeholder="Sem" name="sem" required style="width: 78px;" >							
-							<br>
-							<button class="ui secondary button" id = "u" style="width: 220px;">Delete Only Sem directory</button>
-						</div>
-					</form>
-					<br><br>
-					<li><h3><i><u>SearchPass</u></i>:  Enter Id to get relevant password.</h3></li><br>
-					<li><h3><i><u>UpdateAdmin</u></i>:  Update admin details these details will show in the main app.</h3></li><br>
-					<li><h3><i><u>DeleteUser</u></i>: Enter an Id to delete a specific user.</h3></li><br>
-					<li><h3><i><u>DeleteYear</u></i>: Enter a year to delete a specific year (all Ids under that year will be deleted ).</h3></li><br>
-					<li><h3><i><u>Update/AddUser</u></i>: Enter Id and password to either add or update the existing one.</h3></li><br>
-				   
-					<li><h3><i><u>UploadSeatingArrangements</u></i>: Attach one/ many file.pdf with specific year. (only .pdf format) </h3></li><br>
-					<li><h3><i><u>DeleteYearDirectory</u></i>: Enter year to delete all files including seating arrangement/ marksheet[s] starting with a specific year.</h3></li><br>
-					<li><h3><i><u>DeleteOnlyBatchDirectory</u></i>: Enter year and batch to delete all marksheet[s]
-						 ( for 2015 year and batch 2 : 2015/2 all marksheet[s] in this directory will be deleted ).</h3></li><br>
-					<li><h3><i><u>DeleteOnlySemDirectory</u></i>: Enter year ,batch and semester to delete all marksheet[s] 
-						( for 2015 year, batch 2, semester 1 : 2015/2/1 all marksheet[s] in this directory will be deleted ).</h3></li><br>   
-</center>
+
+		<br><br>
+		<form method="get" action="/updateRecord" style="display: inline">
+			<div class="ui input focus">
+				<input type="text" placeholder="Id" name="id" required style="width: 120px;">
+				<input type="text" placeholder="Password" name="pass" required style="width: 100px;">
+				<button class="ui secondary button" style="width: 230px;">Update/ Add user</button>
+			</div>
+		</form>
+
+		<br><br>
+
+		<form method="post" action="/deleteYear" style="display: inline">
+			<div class="ui input focus">
+				<input type="number" placeholder="Year" name="year" required style="width: 220px;">
+				<button class="ui secondary button" style="width: 230px;">Delete Year directory</button>
+			</div>
+		</form>
+		<br><br>
+		<!-- <form method="post" action="/deleteBatch" style="display: inline">
+			<div class="ui input focus">
+				<input type="text" placeholder="Year" name="year" required style="width: 110px;">
+				<input type="text" placeholder="Batch" name="batch" required style="width: 110px;">
+				<button class="ui secondary button" style="width: 230px;">Delete Only Batch directory</button>
+			</div>
+		</form>
+		<br><br>
+		<form method="post" action="/deleteSem">
+			<div class="ui input focus">
+				<input class="ui input focus" type="number" placeholder="Year" name="year" required
+					style="width: 78px;">
+				<input class="ui input focus" type="number" placeholder="Batch" name="batch" required
+					style="width: 78px;">
+				<input class="ui input focus" type="number" placeholder="Sem" name="sem" required style="width: 78px;">
+				<br>
+				<button class="ui secondary button" id="u" style="width: 220px;">Delete Only Sem directory</button>
+			</div>
+		</form>
+		<br><br> -->
+		<li>
+			<h3><i><u>SearchPass</u></i>: Enter Id to get relevant password.</h3>
+		</li><br>
+		<li>
+			<h3><i><u>UpdateAdmin</u></i>: Update admin details these details will show in the main app.</h3>
+		</li><br>
+		<li>
+			<h3><i><u>DeleteUser</u></i>: Enter an Id to delete a specific user.</h3>
+		</li><br>
+		<li>
+			<h3><i><u>DeleteYear</u></i>: Enter a year to delete a specific year (all Ids under that year will be
+				deleted ).</h3>
+		</li><br>
+		<li>
+			<h3><i><u>Update/AddUser</u></i>: Enter Id and password to either add or update the existing one.</h3>
+		</li><br>
+
+		<li>
+			<h3><i><u>UploadSeatingArrangements</u></i>: Attach one/ many file.pdf with specific year. (only .pdf
+				format) </h3>
+		</li><br>
+		<li>
+			<h3><i><u>DeleteYearDirectory</u></i>: Enter year to delete all files including seating arrangement/
+				marksheet[s] starting with a specific year.</h3>
+		</li><br>
+	</center>
 </body>
 <!-- <script>
 	function startTimer(duration, message) {
@@ -122,4 +138,5 @@ document.getElementById("idd")  .addEventListener("click",()=>{
 	startTimer(2,"Uploading...");
 });
 </script> -->
+
 </html>
