@@ -126,22 +126,24 @@ module.exports.updateSeatingArrangement = (req, res, err) => {
     let filesUploaded = new Array()
     new Promise((resolve, reject) => {
         if (req.body.year < 2000) reject("Invalid year")
-        upload(req, res, (err) => {
-            if (req.body.year.length >= 4) {
-                req.files.forEach((f) => {
-                    let extension = f.originalname.split(".")
-                    if (extension.length == 2 && extension[extension.length - 1].toLowerCase() === "pdf") {
-                        filesUploaded.push(f.originalname.split(".")[0])
-                        uploadSeatingArrangement(f, req.body.year)
-                    } else {
-                        reject(`Invalid file name : ${f.originalname} (supports only pdf ex : somefilename.pdf) Uploaded remaining files :`)
-                    }
-                })
-                resolve(`Seating arrangement[s] for ${req.body.year} updated : `)
-            } else {
-                reject(`Invalid year : ${req.body.year} `)
-            }
-        })
+        else{
+            upload(req, res, (err) => {
+                if (req.body.year.length >= 4) {
+                    req.files.forEach((f) => {
+                        let extension = f.originalname.split(".")
+                        if (extension.length == 2 && extension[extension.length - 1].toLowerCase() === "pdf") {
+                            filesUploaded.push(f.originalname.split(".")[0])
+                            uploadSeatingArrangement(f, req.body.year)
+                        } else {
+                            reject(`Invalid file name : ${f.originalname} (supports only pdf ex : somefilename.pdf) Uploaded remaining files :`)
+                        }
+                    })
+                    resolve(`Seating arrangement[s] for ${req.body.year} updated : `)
+                } else {
+                    reject(`Invalid year : ${req.body.year} `)
+                }
+            })
+        }
 
     }).then(msg =>
         res.render("upload.ejs", {

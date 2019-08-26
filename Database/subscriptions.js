@@ -17,25 +17,27 @@ const myConfig = require('../configuration/config.js')
   
 
   module.exports.notify = (req,res)=>{
-    let emails = new Set()
-    firebase.database().ref("Subscriptions").child("Emails").once('value').then((snapshot)=>{ 
+    let emails = new Array()
+    firebase.database().ref("Subscriptions").once('value').then((snapshot)=>{ 
       snapshot.forEach((i)=>{  
-          i.forEach((j)=>{
-            emails.add(j.val())
-          })  
-        })})
-    .then(()=>{       
-       var mailOptions = {
-         from: 'mukudev404@gmail.com',
-         to: [...emails].join(','),
-         subject: 'You have a new notice!',
-         html: '<h1>'+req.body.notify+'</h1>',
-         priority : "high"
-       };
-       myConfig.emailConfig.sendMail(mailOptions, (error, info)=>{
-         if(info){ res.render("subscription.ejs",{message : "Notified"}) }
-         else{ res.render("subscription.ejs",{message : "Some error has occured please try again"}) }
-       })
+        emails.push(i)
+        })
+        let s = JSON.stringify(snapshot)
+         res.render("subscription.ejs",{message : Object.values(JSON.parse(s))}) 
+      })
+    .then(()=>{      
+      res.render("subscription.ejs",{message : Object.keys(emails)}) 
+      //  var mailOptions = {
+      //    from: 'mukudev404@gmail.com',
+      //    to: [...emails].join(','),
+      //    subject: 'You have a new notice!',
+      //    html: '<h1>'+req.body.notify+'</h1>',
+      //    priority : "high"
+      //  };
+      //  myConfig.emailConfig.sendMail(mailOptions, (error, info)=>{
+      //    if(info){ res.render("subscription.ejs",{message : emails}) }
+      //    else{ res.render("subscription.ejs",{message :emails}) }
+      //  })
     })
   }
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DELETE NOTICE FILES</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.css">
+    <link rel="stylesheet" type="text/css" href="backimg.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body style=" background: #12c2e9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+<br/><br/>
+<center>
+    <h2>Notice files (these file[s] are visible to all users)</h2>
+    <%if(msg){%><h3><%=msg%></h4><%}%>
+    <%if(!files){%><h4>NO NOTICE FILE[S] FOUND</h4><%}%>
+<br/><br/>
+
+    <form method="post" action="/deleteFile">
+        <%for(var i = 0; files && i < files.length;i++){%>
+        <div class="ui secondary button" style="width:330px; " id="box">
+            <input type="radio" name="file" value=<%=files[i]%>> <%=files[i]%><br>
+        </div>
+        <br>
+        <br>
+        <br>
+        <%}%>
+        <%if(files){%>
+            <input id="delete" type="submit" value="Delete" class="ui youtube button">
+            <%}%>
+    
+    
+    </form>
+</center>
+</body>
+</html>
