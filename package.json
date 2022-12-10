@@ -19,7 +19,7 @@
     "electron": "^5.0.1",
     "electron-packager": "^13.1.1",
     "electron-winstaller": "^3.0.4",
-    "express": "^4.17.0",
+    "express": "^4.17.3",
     "express-generator": "^4.16.1",
     "firebase": "^6.0.2",
     "firebase-admin": "^7.3.0",
